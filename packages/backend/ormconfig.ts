@@ -1,10 +1,10 @@
+/* eslint-disable no-undef */
 import * as dotenv from 'dotenv';
 // import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { createConnections } from 'typeorm'; 
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
-export const connections = createConnections([ 
+export default [
   {
     name: 'dev',
     type: 'mysql',
@@ -23,7 +23,7 @@ export const connections = createConnections([
       migrationsDir: 'src/database/migrations',
       subscribersDir: 'src/database/subscriber',
     },
-   //  namingStrategy: new SnakeNamingStrategy(),
+    // namingStrategy: new SnakeNamingStrategy(),
   },
   {
     name: 'stage',
@@ -35,9 +35,9 @@ export const connections = createConnections([
     database: process.env.DB_DATABASE_STAGE,
     synchronize: false,
     logging: true,
-    entities: ['src/api/models/**/*{.ts,.js}'],
-    migrations: ['src/database/migrations/**/*{.ts,.js}'],
-    subscribers: ['src/database/subscriber/**/*{.ts,.js}'],
+    entities: ['src/api/models/**/*.ts'],
+    migrations: ['src/database/migrations/**/*.ts'],
+    subscribers: ['src/database/subscriber/**/*.ts'],
     cli: {
       entitiesDir: 'src/api/models',
       migrationsDir: 'src/database/migrations',
@@ -45,4 +45,4 @@ export const connections = createConnections([
     },
     // namingStrategy: new SnakeNamingStrategy(),
   },
-]); 
+];

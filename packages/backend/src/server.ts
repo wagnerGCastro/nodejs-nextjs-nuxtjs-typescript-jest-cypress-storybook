@@ -6,7 +6,7 @@ import { loadEventDispatcher } from '@base/utils/load-event-dispatcher';
 import { useContainer as routingControllersUseContainer, useExpressServer, getMetadataArgsStorage } from 'routing-controllers';
 import { loadHelmet } from '@base/utils/load-helmet';
 import { Container } from 'typedi';
-import { createConnection, useContainer as typeormOrmUseContainer } from 'typeorm';
+import { createConnection, createConnections, useContainer as typeormOrmUseContainer } from 'typeorm';
 import { Container as containerTypeorm } from 'typeorm-typedi-extensions';
 import { useSocketServer, useContainer as socketUseContainer } from 'socket-controllers';
 import { registerController as registerCronJobs, useContainer as cronUseContainer } from 'cron-decorators';
@@ -17,6 +17,11 @@ import { routingControllersToSpec } from 'routing-controllers-openapi';
 import * as swaggerUiExpress from 'swagger-ui-express';
 import { buildSchema } from 'type-graphql';
 import bodyParser from 'body-parser';
+import * as dotenv from 'dotenv';
+
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+
+
 
 export class App {
   private app: express.Application = express();
@@ -48,10 +53,27 @@ export class App {
     cronUseContainer(Container);
   }
 
+  // private async typeOrmCreateConnection() {
+  //   try {
+  //     await createConnection();
+  //     console.log('Esto conectado com o banco de dados')
+  //   } catch (error) {
+  //     console.log('Caught! Cannot connect to database: ', error);
+  //   }
+  // }
+
   private async typeOrmCreateConnection() {
     try {
-      await createConnection();
-      console.log('Esto conectado com o banco de dados')
+      const conn = await createConnections();
+
+      // const conn = await createConnection("stage");
+
+      //const { database, name } = conn.options;
+      // console.log( `Connection database:'${name}', name:${database}`, );
+      console.log( `Connection database: ${conn}` );
+      // console.log(
+      //   `Connection database:'${name}', host:'http://${conn.options.host}:${conn.options.port}', name:${database}`,
+      // );
     } catch (error) {
       console.log('Caught! Cannot connect to database: ', error);
     }

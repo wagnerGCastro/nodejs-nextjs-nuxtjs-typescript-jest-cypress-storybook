@@ -1,10 +1,9 @@
 import * as dotenv from 'dotenv';
-// import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { createConnections } from 'typeorm'; 
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
-export const connections = createConnections([ 
+export default [
   {
     name: 'dev',
     type: 'mysql',
@@ -16,14 +15,14 @@ export const connections = createConnections([
     synchronize: true,
     logging: true,
     entities: ['src/api/models/**/*.ts'],
-    migrations: ['src/database/migrations/**/*.ts'],
+    migrations: ['src/database/seeds/*.ts'],
     subscribers: ['src/database/subscriber/**/*.ts'],
     cli: {
       entitiesDir: 'src/api/models',
-      migrationsDir: 'src/database/migrations',
+      migrationsDir: 'src/database/seeds',
       subscribersDir: 'src/database/subscriber',
     },
-   //  namingStrategy: new SnakeNamingStrategy(),
+    namingStrategy: new SnakeNamingStrategy(),
   },
   {
     name: 'stage',
@@ -36,13 +35,11 @@ export const connections = createConnections([
     synchronize: false,
     logging: true,
     entities: ['src/api/models/**/*{.ts,.js}'],
-    migrations: ['src/database/migrations/**/*{.ts,.js}'],
-    subscribers: ['src/database/subscriber/**/*{.ts,.js}'],
+    migrations: ['src/database/seeds/*{.ts,.js}'],
     cli: {
       entitiesDir: 'src/api/models',
-      migrationsDir: 'src/database/migrations',
-      subscribersDir: 'src/database/subscriber',
+      migrationsDir: 'src/database/seeds',
     },
-    // namingStrategy: new SnakeNamingStrategy(),
+    namingStrategy: new SnakeNamingStrategy(),
   },
-]); 
+];
