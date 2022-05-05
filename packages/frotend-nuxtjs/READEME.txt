@@ -1,0 +1,40 @@
+# Referencies:
+  - Creating a Mobile Web App with Vue, Vuetify & Typescript
+    https://medium.com/@JonUK/creating-a-mobile-web-app-with-vue-vuetify-typescript-dc69bed4cd2d
+
+  - Errors
+    https://stackoverflow.com/questions/58232691/sass-loader-error-options-has-an-unknown-property-indentedsyntax-when-upgrad/58269208
+    https://qastack.com.br/programming/58184549/sass-loader-error-invalid-options-object-that-does-not-match-the-api-schema
+    https://stackoverflow.com/questions/58184549/sass-loader-error-invalid-options-object-that-does-not-match-the-api-schema
+
+  - Nuxtjs,jest,eselit,prettir
+    https://medium.al-un.fr/nuxt-vuex-jest-tested-powered-by-typescript-70441600ef39
+    https://storybook.nuxtjs.org/getting-started/installation
+
+  - repositories
+    https://github.com/sniperadmin/nuxt-ts-storybook
+    https://github.com/developer-vue/vue-element-typescript-admin
+    https://github.com/developer-vue/nuxt-typescript-vuetify
+    https://github.com/vue-developer/vue-typescript-admin-template/
+    https://github.com/bawa93/nuxtjs-vue-vuetify-vue-test-utils-jest-sample-project
+
+  - Dashboard
+    https://www.creative-tim.com/product/vuetify-material-dashboard
+
+  - plugins: eslint and prettier
+    https://eslint.vuejs.org/rules/max-attributes-per-line.html
+
+  - cypress
+    https://stackoverflow.com/questions/58982852/eslint-cy-is-not-defined-cypress
+    https://www.reddit.com/r/reactjs/comments/gpwvdx/jest_reference_error_describe_is_not_defined_when/
+    https://testersdock.com/cypress-folder-structure/
+    https://docs.cypress.io/guides/getting-started/writing-your-first-test#Step-1-Visit-a-page
+
+  - docker Initialization
+    docker-compose build workspace_ecommerce
+    docker-compose up -d workspace_ecommerce
+    docker container exec -it portf_01-workspace_ecommerce-1 /bin/bash
+
+  - Stacks
+    - node v13.14.0
+    - npm v13.14.0
