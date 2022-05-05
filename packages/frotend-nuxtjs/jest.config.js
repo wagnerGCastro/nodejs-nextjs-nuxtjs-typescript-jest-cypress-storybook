@@ -1,0 +1,48 @@
+module.exports = {
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^~/(.*)$': '<rootDir>/src/$1',
+    '^vue$': 'vue/dist/vue.common.js',
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/__mocks__/fileMock.js',
+  },
+  moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
+  testMatch: ['<rootDir>/__tests__/**/*.{spec,test}.{js,ts}'],
+  transform: {
+    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.js$': 'babel-jest',
+    '.*\\.(vue)$': 'vue-jest',
+  },
+  collectCoverage: true,
+  collectCoverageFrom: [
+    '<rootDir>/src/components/**/*.vue',
+    '<rootDir>/src/pages/**/*.vue',
+    // '!**/node_modules/**',
+    // '!**/.storybook/**',
+    // '!**/tests/**',
+    // '!**/__tests__/**',
+    // '!**/cypress/**',
+    // '!**/coverage/**',
+    // '!jest.config.js',
+    // '!tsconfig.json'
+  ],
+  preset: 'ts-jest',
+  testPathIgnorePatterns: [
+    '/.next/',
+    '/.nuxt/',
+    '/node_modules/',
+    '/lib/',
+    '/tests/',
+    '/coverage/',
+    '/.storybook/',
+    '/.husky/',
+    '/.vscode/',
+    '/cypress/',
+    '/config/',
+    '/public/',
+    '/dist/',
+    '/build/',
+  ],
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
+}
