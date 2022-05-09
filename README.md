@@ -14,25 +14,25 @@ This project uses lot of stuff as:
 - [Prettier](https://prettier.io/)
 - [Husky](https://github.com/typicode/husky)
 
-
-## Stacks Backend
-
-This project uses lot of stuff as:
-
-## DOCKER FILES
-  - pgadmin4
-    https://github.com/postgres/pgadmin4
-  - postgres
-    https://github.com/docker-library/postgres 
-
 ## Comands
-  - Git
-    $  git commit --amend  -m "feat(project) - Initialization Project"   
+  # Git
+    $  git commit --amend -m "feat(project) - Initialization Project"   
 
-  - Backend
-    $ cd ./www/backend-api && npm isntall && npm run dev
-  
-  - Docker
-    $ docker-compose -f ./docker-compose.dev.yml up -d postgres pgadmin4
-    $ docker-compose -f ./docker-compose.dev.yml --env-file ./.env.dev up -d mysql webserver
-  
+  # Docker
+    - build
+      $ docker-compose build workspace
+      $ docker-compose -f docker-compose.dev.yml --env-file .env.dev build workspace
+      $ docker-compose -f docker-compose.stage.yml --env-file .env.stage build workspace
+
+    - up container
+      $ docker-compose up -d workspace mysql
+      $ docker-compose -f docker-compose.dev.yml --env-file .env.dev up -d workspace mysql 
+      $ docker-compose -f docker-compose.stage.yml --env-file .env.stage up -d workspace mysql 
+
+    - exec container
+      $ docker-compose -f docker-compose.dev.yml --env-file .env.dev exec workspace bash  
+      $ docker exec -it id_constainer bash
+
+    - stop/start container
+      $ docker-compose -f docker-compose.dev.yml --env-file .env.dev stop workspace
+      $ docker-compose -f docker-compose.dev.yml --env-file .env.dev start workspace
